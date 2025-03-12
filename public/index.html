@@ -3,53 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenLeaf Organics | Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Greenleaf Organics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #5cb85c; /* Green color from the original site */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer; /* Make nav links look clickable */
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .product h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #5cb85c; /* Green color from the original site */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #4cae4c;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Form Styling */
+        .form-container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left; /* Align form content to the left */
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Important for padding to be inside width */
+        }
+
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #5cb85c; /* Green color from the original site */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .form-group button:hover {
+            background-color: #4cae4c;
+        }
+
+        /* Initially hide forms */
+        .form-container {
+            display: none;
+        }
+
+        /* Show forms class - to be toggled by JavaScript */
+        .form-container.show-form {
+            display: block;
+        }
+
+    </style>
 </head>
 <body>
-
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">GreenLeaf Organics</div>
-        <ul>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Fresh. Local. Organic.</h1>
-            <p>Bringing the best organic produce to Hyderabad.</p>
-        </div>
+    <header>
+        <h1>Welcome to Greenleaf Organics</h1>
+        <p>Your source for the freshest organic produce online!</p>
     </header>
 
-    <!-- Image Carousel -->
-    <section id="carousel">
-        <h2>Explore Our Organic Range</h2>
-        <div class="carousel-container">
-            <div class="carousel-images">
-                <img src="images/product1.jpg" alt="Product 1">
-                <img src="images/product2.jpg" alt="Product 2">
-                <img src="images/product3.jpg" alt="Product 3">
+    <nav>
+        <a href="#" onclick="showContent('products')">Home</a>
+        <a href="/products">Products</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
+        <a href="#" onclick="showContent('signup')">Signup</a>
+        <a href="#" onclick="showContent('login')">Login</a>
+    </nav>
+
+    <main>
+        <h2 id="main-title">Featured Products</h2>
+
+        <div id="product-section">
+            <div class="product-grid">
+                <div class="product">
+                    <img src="https://placehold.co/300x200/5cb85c/ffffff?text=Organic+Apples" alt="Organic Apples">
+                    <h3>Organic Apples</h3>
+                    <p>Crisp and delicious organic apples, freshly picked from our orchards.</p>
+                    <p>$2.50/lb</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+                <div class="product">
+                    <img src="https://placehold.co/300x200/5cb85c/ffffff?text=Fresh+Carrots" alt="Fresh Carrots">
+                    <h3>Fresh Carrots</h3>
+                    <p>Sweet and crunchy organic carrots, perfect for snacking or cooking.</p>
+                    <p>$1.80/bunch</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+                <div class="product">
+                    <img src="https://placehold.co/300x200/5cb85c/ffffff?text=Juicy+Tomatoes" alt="Juicy Tomatoes">
+                    <h3>Juicy Tomatoes</h3>
+                    <p>Vine-ripened organic tomatoes, bursting with flavor for your salads and sauces.</p>
+                    <p>$3.00/lb</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
+                <div class="product">
+                    <img src="https://placehold.co/300x200/5cb85c/ffffff?text=Green+Lettuce" alt="Green Lettuce">
+                    <h3>Green Lettuce</h3>
+                    <p>Fresh and crisp organic green lettuce, the perfect base for any salad.</p>
+                    <p>$1.50/head</p>
+                    <a href="#" class="btn">Add to Cart</a>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Video & Social Media -->
-    <section id="social">
-        <h2>Watch Our Story</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/HC52RrASIak" frameborder="0" allowfullscreen></iframe>
+        <div id="signup-form" class="form-container">
+            <h2>Signup</h2>
+            <form action="/signup" method="POST">
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Signup</button>
+                </div>
+            </form>
+        </div>
 
-        <h2>Stay Connected</h2>
-        <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid03314pW22ZK8JkMEJXhMG9bEQVh4oTmR7MLe6Pob56SF6zHJtMxamLVk76LzAjAS5il%26id%3D61573767850457" width="500" height="665"></iframe>
-    </section>
+        <div id="login-form" class="form-container">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+
+    </main>
 
     <footer>
-        <p>&copy; 2025 GreenLeaf Organics</p>
+        <p>&copy; 2023 Greenleaf Organics. All rights reserved.</p>
     </footer>
+
+    <script>
+        function showContent(contentType) {
+            document.getElementById('product-section').style.display = 'none';
+            document.getElementById('signup-form').classList.remove('show-form');
+            document.getElementById('login-form').classList.remove('show-form');
+
+            if (contentType === 'signup') {
+                document.getElementById('signup-form').classList.add('show-form');
+                document.getElementById('main-title').textContent = 'Signup';
+            } else if (contentType === 'login') {
+                document.getElementById('login-form').classList.add('show-form');
+                document.getElementById('main-title').textContent = 'Login';
+            } else { // contentType === 'products' or default
+                document.getElementById('product-section').style.display = 'block';
+                document.getElementById('main-title').textContent = 'Featured Products';
+            }
+        }
+
+        // Initially show products content
+        showContent('products');
+    </script>
 
 </body>
 </html>
+```
